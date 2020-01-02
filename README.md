@@ -9,6 +9,8 @@ Things you may want to cover:
   * 2.5.3
 
 * System dependencies
+  * rails 5.2.2
+  * mysql 5.7
 
 * Configuration
 
