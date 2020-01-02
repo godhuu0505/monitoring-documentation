@@ -28,3 +28,20 @@ Things you may want to cover:
 
   # localhost:3000にアクセス
   ```
+
+* Usages
+  * login for mysql
+    ```
+    $ mysql -u root -p -h localhost -P 3306 --protocol=tcp
+    ```
+  * execute command
+    ```
+    $ docker-compose run web ~~~
+
+    # ex) bundle install
+    $ docker-compose run web bundle install
+
+    # ex) rails db:migrate
+    $ docker-compose run web bundle exec rails db:migrate
+    ```
+
