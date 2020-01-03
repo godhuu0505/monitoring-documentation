@@ -1,5 +1,7 @@
+require 'open-uri'
+
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :download, :edit, :update, :destroy]
 
   def index
     @documents = Document.all
@@ -9,6 +11,13 @@ class DocumentsController < ApplicationController
   end
 
   def download
+    doc = open(@document.url)
+    if doc.content_type == "application/pdf"
+      filename = Time.current.strftime("%Y%m%d%H%M%S") + "_" + @document.name.to_s + ".pdf"
+      open(filename, "w+b") do |out|
+        out.write(doc.read)
+      end
+    end
   end
 
   def new
