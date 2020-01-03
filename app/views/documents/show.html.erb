@@ -10,5 +10,6 @@
   <%= @document.url %>
 </p>
 
+<%= link_to 'Download', download_document_path(@document), method: :post %> |
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>

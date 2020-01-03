@@ -12,6 +12,10 @@ class DocumentsController < ApplicationController
   def show
   end
 
+  # POST /documents/1/download
+  def download
+  end
+
   # GET /documents/new
   def new
     @document = Document.new
