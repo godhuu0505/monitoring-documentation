@@ -13,3 +13,21 @@
 <%= link_to 'Download', download_document_path(@document), method: :post %> |
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>file_aame</th>
+      <th>created_at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @document_data.each do |document_datum| %>
+      <tr>
+        <td><%= document_datum.file_name %></td>
+        <td><%= document_datum.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
