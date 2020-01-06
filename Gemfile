@@ -14,11 +14,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'pry-doc'
 end
 
 group :development do
