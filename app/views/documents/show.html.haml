@@ -1,0 +1,23 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @document.name
+%p
+  %strong Url:
+  = @document.url
+= link_to 'Download', download_document_path(@document), method: :post
+|
+= link_to 'Edit', edit_document_path(@document)
+|
+= link_to 'Back', documents_path
+%table
+  %thead
+    %tr
+      %th file_aame
+      %th created_at
+      %th{:colspan => "3"}
+  %tbody
+    - @document_data.each do |document_datum|
+      %tr
+        %td= document_datum.file_name
+        %td= document_datum.created_at
