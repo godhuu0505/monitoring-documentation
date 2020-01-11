@@ -8,4 +8,19 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
+    %nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+      = link_to "Home", "/", class: "navbar-brand"
+      %button.navbar-toggler.navbar-toggler-right{:type => "button", :data => {:toggle => 'collapse', :target => '#navbarNav'}, :aria => {:controls => 'navbarNav', :expanded => 'false', :label => 'Toggle navigation'}}
+        %span.navbar-toggler-icon
+      %div.napse.navbar-collapse#navbarNav
+        %ul.navbar-nav.mr-auto
+          %li.nav-item.active
+            = link_to "Documents", documents_path, class: "nav-link"
+          %li.nav-item
+            = link_to "News Categories", news_categories_path, class: "nav-link"
+          %li.nav-item
+            = link_to "Settings", root_path, class: "nav-link disabled"
+    %main
+      .jumbotron
+        #content_view
+          = yield
