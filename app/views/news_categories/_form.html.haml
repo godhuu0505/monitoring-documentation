@@ -7,8 +7,8 @@
       %ul
         - news_category.errors.full_messages.each do |message|
           %li= message
-  .field
+  .field.mb-3
     = form.label :name
-    = form.text_field :name
-  .actions
-    = form.submit
+    = form.text_field :name, class: "form-control", placeholder: "document name"
+  .actions.text-center.mb-3
+    = form.submit class: "btn btn-primary btn-lg"

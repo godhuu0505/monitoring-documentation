@@ -1,7 +1,16 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @news_category.name
-= link_to 'Edit', edit_news_category_path(@news_category)
-|
-= link_to 'Back', news_categories_path
+.col-md-6.mx-auto
+  - if notice
+    .alert.alert-primary.alert-dismissible.fade.show{role: "alert"}
+      = notice
+      %button.btn.btn-secondary{type: "button", class: "close small", data: {dismiss: "alert"}, aria: {label: "close"} }
+        %span{aria: { hidden: "true"} } ✕
+  %h2.py-2.text-center
+    Show Document
+  %hr
+  .field.mb-3
+    %dt Name:
+    %dd
+      = @news_category.name
+  .text-right
+    = link_to 'Edit', edit_news_category_path(@news_category), role: "button", class: "btn btn-outline-secondary"
+    = link_to 'Back to Index', news_categories_path, role: "button", class: "btn btn-link"

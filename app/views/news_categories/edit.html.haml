@@ -1,5 +1,8 @@
-%h1 Editing News Category
-= render 'form', news_category: @news_category
-= link_to 'Show', @news_category
-|
-= link_to 'Back', news_categories_path
+.col-md-6.mx-auto
+  %h2.py-2.text-center
+    Editing NewsCategory
+  = render 'form', news_category: @news_category
+  %hr
+  .text-right
+    = link_to 'Show', @news_category, role: "button", class: "btn btn-outline-info"
+    = link_to 'Back to Index', news_categories_path, role: "button", class: "btn btn-link"
