@@ -1,23 +1,35 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @document.name
-%p
-  %strong Url:
-  = @document.url
-= link_to 'Download', download_document_path(@document), method: :post
-|
-= link_to 'Edit', edit_document_path(@document)
-|
-= link_to 'Back', documents_path
-%table
-  %thead
-    %tr
-      %th file_aame
-      %th created_at
-      %th{:colspan => "3"}
-  %tbody
-    - @document_data.each do |document_datum|
+.col-md-6.mx-auto
+  - if notice
+    .alert.alert-primary.alert-dismissible.fade.show{role: "alert"}
+      = notice
+      %button.btn.btn-secondary{type: "button", class: "close small", data: {dismiss: "alert"}, aria: {label: "close"} }
+        %span{aria: { hidden: "true"} } ✕
+  %h2.py-2.text-center
+    Show Document
+  %hr 
+  .field.mb-3
+    %dt Name:
+    %dd
+      = @document.name
+  .field.mb-3
+    %dt Url:
+    %dd
+      = @document.url
+  .text-right
+    = link_to 'Download', download_document_path(@document), method: :post, role: "button", class: "btn btn-outline-info"
+    = link_to 'Edit', edit_document_path(@document), role: "button", class: "btn btn-outline-secondary"
+    = link_to 'Back to Index', documents_path, role: "button", class: "btn btn-link"
+  %hr
+  %table.table.table-striped.table-hover.table-sm
+    %thead.thead-dark
       %tr
-        %td= document_datum.file_name
-        %td= document_datum.created_at
+        %th file_aame
+        %th created_at
+        %th delete
+    %tbody
+      - @document_data.each do |document_datum|
+        %tr{:class => "document_data_#{document_datum.id}"}
+          %td= document_datum.file_name
+          %td= document_datum.created_at
+          %td= link_to "delete", "#", role: "button", class: "btn btn-outline-danger btn-sm"
+          %td= #link_to 'Delete', document_datum, method: :delete, data: { confirm: 'Are you sure?' }

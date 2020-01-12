@@ -1,5 +1,9 @@
-%h1 Editing Document
-= render 'form', document: @document
-= link_to 'Show', @document
-|
-= link_to 'Back', documents_path
+.col-md-6.mx-auto
+  %h2.py-2.text-center
+    Editing Document
+  = render 'form', document: @document
+  %hr
+  .text-right
+    = link_to 'Show', @document, role: "button", class: "btn btn-outline-info"
+    = link_to 'Back to Index', documents_path, role: "button", class: "btn btn-link"
+
