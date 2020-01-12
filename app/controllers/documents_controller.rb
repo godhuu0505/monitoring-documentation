@@ -15,7 +15,8 @@ class DocumentsController < ApplicationController
     doc = open(@document.url)
     if doc.content_type == "application/pdf"
       filename = Time.current.strftime("%Y%m%d%H%M%S") + "_" + @document.name.to_s + ".pdf"
-      open(filename, "w+b") do |out|
+      download_file = Rails.root.join("public", "download_files", filename)
+      open(download_file, "w+b") do |out|
         out.write(doc.read)
       end
 

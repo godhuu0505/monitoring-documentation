@@ -16,7 +16,7 @@
     %dd
       = @document.url
   .text-right
-    = link_to 'Download', download_document_path(@document), method: :post, role: "button", class: "btn btn-outline-info"
+    = link_to 'Get Document', download_document_path(@document), method: :post, role: "button", class: "btn btn-outline-info"
     = link_to 'Edit', edit_document_path(@document), role: "button", class: "btn btn-outline-secondary"
     = link_to 'Back to Index', documents_path, role: "button", class: "btn btn-link"
   %hr
@@ -25,11 +25,12 @@
       %tr
         %th file_aame
         %th created_at
-        %th delete
+        %th
     %tbody
       - @document_data.each do |document_datum|
         %tr{:class => "document_data_#{document_datum.id}"}
           %td= document_datum.file_name
           %td= document_datum.created_at
-          %td= link_to "delete", "#", role: "button", class: "btn btn-outline-danger btn-sm"
-          %td= #link_to 'Delete', document_datum, method: :delete, data: { confirm: 'Are you sure?' }
+          %td
+            - if download_file_path(document_datum.file_name).present?
+              = link_to "Download", download_file_path(document_datum.file_name), role: "button", class: "btn btn-outline-info btn-sm"
