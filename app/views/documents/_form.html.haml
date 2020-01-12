@@ -7,11 +7,11 @@
       %ul
         - document.errors.full_messages.each do |message|
           %li= message
-  .field
+  .field.mb-3
     = form.label :name
-    = form.text_field :name
-  .field
+    = form.text_field :name, class: "form-control", placeholder: "document name"
+  .field.mb-3
     = form.label :url
-    = form.text_field :url
-  .actions
-    = form.submit
+    = form.text_field :url, class: "form-control", placeholder: "https://example.pdf"
+  .actions.text-center.mb-3
+    = form.submit class: "btn btn-primary btn-lg"

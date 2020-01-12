@@ -1,21 +1,28 @@
-%p#notice= notice
-%h1 Documents
-%table.table.table-striped.table-hover.table-sm
-  %thead.thead-dark
-    %tr
-      %td.id Name
-      %td.title Url
-      %td.title show
-      %td.edit edit
-      %td.delete delete
-  %tbody
-    - @documents.each do |document|
-      %tr{:class => "document_#{document.id}"}
-        %td= document.name
-        %td
-          = link_to document.url, document.url, :target => "_blank"
-        %td= link_to 'Show', document
-        %td= link_to 'Edit', edit_document_path(document)
-        %td= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Document', new_document_path
+.mx-auto
+  - if notice
+    .alert.alert-primary.alert-dismissible.fade.show{role: "alert"}
+      = notice
+      %button.btn.btn-secondary{type: "button", class: "close small", data: {dismiss: "alert"}, aria: {label: "close"} }
+        %span{aria: { hidden: "true"} } ✕
+  %h2.py-2.text-center
+    Index Documents
+  %table.table.table-striped.table-hover.table-sm
+    %thead.thead-dark
+      %tr
+        %td Name
+        %td Url
+        %td show
+        %td edit
+        %td delete
+    %tbody
+      - @documents.each do |document|
+        %tr{:class => "document_#{document.id}"}
+          %td= document.name
+          %td
+            = link_to document.url, document.url, :target => "_blank"
+          %td= link_to 'Show', document, role: "button", class: "btn btn-outline-info btn-sm"
+          %td= link_to 'Edit', edit_document_path(document), role: "button", class: "btn btn-outline-secondary btn-sm"
+          %td= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class: "btn btn-outline-danger btn-sm"
+  %hr
+  .actions.text-center.mb-3
+    = link_to 'New Document', new_document_path, class: "btn btn-primary btn-lg"
