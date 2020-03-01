@@ -1,4 +1,4 @@
-.col-md-6.mx-auto
+.mx-auto
   - if notice
     .alert.alert-primary.alert-dismissible.fade.show{role: "alert"}
       = notice
@@ -24,13 +24,19 @@
     %thead.thead-dark
       %tr
         %th file_aame
+        %th md5
+        %th note
         %th created_at
         %th
     %tbody
       - @document_data.each do |document_datum|
         %tr{:class => "document_data_#{document_datum.id}"}
           %td= document_datum.file_name
+          %td= document_datum.md5sum
+          %td= document_datum.note
           %td= document_datum.created_at
           %td
             - if download_file_path(document_datum.file_name).present?
               = link_to "Download", download_file_path(document_datum.file_name), role: "button", class: "btn btn-outline-info btn-sm"
+            - #if download_file_path(document_datum.file_name).present?
+              = #link_to "Edit", edit_document_datum_path(document_datum), role: "button", class: "btn btn-outline-secondary btn-sm"

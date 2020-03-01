@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post 'download'
     end
   end
+  resources :document_data
   resources :news_categories
 
   # root_path
