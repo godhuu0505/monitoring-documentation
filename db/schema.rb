@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_173008) do
+ActiveRecord::Schema.define(version: 2020_03_01_153418) do
 
   create_table "document_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "document_id"
     t.string "file_name"
     t.string "document_type"
+    t.string "md5sum"
+    t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["document_id"], name: "index_document_data_on_document_id"
