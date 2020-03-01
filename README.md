@@ -11,6 +11,8 @@ Things you may want to cover:
 * System dependencies
   * rails 6.0.2
   * mysql 5.7
+  * docker
+  * nodojs
 
 * Configuration
 
