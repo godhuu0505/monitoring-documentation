@@ -6,10 +6,10 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-  * 2.5.3
+  * 2.7.0
 
 * System dependencies
-  * rails 5.2.2
+  * rails 6.0.2
   * mysql 5.7
 
 * Configuration
@@ -26,7 +26,8 @@ Things you may want to cover:
 
 * Installation
   ```
-  $ sudo docker-compose up -d
+  $ docker-compose up -d
+  $ docker-compose run web bundle exec rails db:create db:migrate
 
   # localhost:3000にアクセス
   ```
